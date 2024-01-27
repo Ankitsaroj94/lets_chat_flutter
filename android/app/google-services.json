@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1091018568796",
+    "project_id": "lets-chat-eba12",
+    "storage_bucket": "lets-chat-eba12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091018568796:android:c006cb91410843df42e299",
+        "android_client_info": {
+          "package_name": "com.example.calculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcuXf9oMWuvY_hxcoYgzg-y6gm9OCVYqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091018568796:android:138d2bf70a10f67942e299",
+        "android_client_info": {
+          "package_name": "com.example.lets_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcuXf9oMWuvY_hxcoYgzg-y6gm9OCVYqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
