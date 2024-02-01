@@ -1,4 +1,14 @@
+// ignore_for_file: duplicate_import
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:lets_chat/services/database_service.dart';
+// pages
+import '../services/navigation_services.dart';
+import '../services/media_services.dart';
+import '../services/cloud_storage_services.dart';
+import '../services/database_service.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
@@ -16,6 +26,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    Future.delayed(const Duration(seconds: 3)).then(
+      (_) {
+        _setup().then(
+          (_) => widget.onInitializationComplete(),
+        );
+      },
+    );
   }
 
   @override
@@ -23,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
     return MaterialApp(
       title: 'lets_chat',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
         // Other theme properties...
       ),
       home: Scaffold(
@@ -31,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Container(
           height: 200,
           width: 200,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.contain,
               image: AssetImage('assets/images/logo.png'),
@@ -39,6 +56,27 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ),
       )),
+    );
+  }
+
+  Future<void> _setup() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    _registerServices();
+  }
+
+  void _registerServices() {
+    GetIt.instance.registerSingleton<Navigationservices>(
+      Navigationservices(),
+    );
+    GetIt.instance.registerSingleton<MediaService>(
+      MediaService(),
+    );
+    GetIt.instance.registerSingleton<CloudStorageService>(
+      CloudStorageService(),
+    );
+    GetIt.instance.registerSingleton<DatabaseServices>(
+      DatabaseServices(),
     );
   }
 }
